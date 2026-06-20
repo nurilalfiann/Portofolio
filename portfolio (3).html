@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Nuril Alfian</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07070f;--bg2:#0e0e1a;--bg3:#161624;
+  --accent:#7c6ee8;--accent2:#b8aaff;--accent3:#e8b4ff;
+  --text:#f2f0ff;--text2:#a8a0c8;--text3:#5c5580;
+  --border:rgba(124,110,232,0.18);--card:rgba(255,255,255,0.025);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;font-size:16px;line-height:1.7;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:4px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 4rem;background:rgba(7,7,15,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-style:italic;color:var(--accent2);text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text3);text-decoration:none;font-size:0.82rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent2)}
+
+#home{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;padding:7rem 4rem 4rem;position:relative;overflow:hidden}
+.hero-bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(124,110,232,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(124,110,232,0.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+.hero-glow{position:absolute;width:600px;height:600px;background:radial-gradient(circle,rgba(124,110,232,0.13) 0%,transparent 70%);top:30%;left:5%;pointer-events:none}
+.hero-content{position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(124,110,232,0.1);color:var(--accent2);font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:0.45rem 1.1rem;border-radius:100px;border:1px solid rgba(124,110,232,0.35);margin-bottom:2rem}
+.badge-dot{width:7px;height:7px;background:#4ade80;border-radius:50%;box-shadow:0 0 8px #4ade80;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,4vw,3.8rem);line-height:1.08;margin-bottom:0.5rem}
+.hero-name em{font-style:italic;color:var(--accent2)}
+.hero-subtitle{font-size:0.9rem;font-weight:600;color:var(--accent);letter-spacing:0.06em;margin-bottom:1.5rem;text-transform:uppercase}
+.hero-desc{font-size:0.95rem;color:var(--text2);max-width:500px;margin-bottom:2.5rem;line-height:1.9}
+.hero-desc strong{color:var(--accent2);font-weight:600}
+.hero-btns{display:flex;gap:0.85rem;flex-wrap:wrap}
+.btn-primary{background:linear-gradient(135deg,var(--accent),#9b8af0);color:#fff;padding:0.85rem 1.9rem;border-radius:8px;text-decoration:none;font-weight:700;font-size:0.875rem;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(124,110,232,0.3);transition:all 0.25s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,110,232,0.5)}
+.btn-outline{background:transparent;color:var(--text2);padding:0.85rem 1.9rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:0.875rem;border:1px solid var(--border);transition:all 0.25s;cursor:pointer}
+.btn-outline:hover{border-color:var(--accent);color:var(--text);background:rgba(124,110,232,0.07);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2.5rem;border-top:1px solid var(--border)}
+.stat-num{font-size:1.8rem;font-weight:800;color:var(--accent2);line-height:1}
+.stat-label{font-size:0.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;margin-top:0.2rem}
+
+.hero-photo-wrap{position:relative;z-index:1;display:flex;justify-content:center;align-items:center}
+.photo-border{position:relative;width:340px;max-width:100%}
+.photo-border::before{content:'';position:absolute;inset:-3px;background:linear-gradient(135deg,var(--accent),var(--accent3),var(--accent2));border-radius:20px;z-index:0}
+.photo-border::after{content:'';position:absolute;inset:6px;background:var(--bg);border-radius:15px;z-index:1}
+.photo-border img{position:relative;z-index:2;width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:15px;display:block}
+.photo-chip{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border);border-radius:50px;padding:0.55rem 1.3rem;font-size:0.76rem;font-weight:600;color:var(--accent2);white-space:nowrap;z-index:10;box-shadow:0 8px 24px rgba(0,0,0,0.5)}
+
+section.content-section{padding:7rem 4rem;position:relative}
+section.content-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+section.content-section.alt{background:var(--bg2)}
+.sec-label{font-size:0.72rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:0.6rem}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3vw,2.7rem);line-height:1.15;margin-bottom:0.75rem}
+.sec-title em{font-style:italic;color:var(--accent2)}
+.sec-desc{color:var(--text2);font-size:0.95rem;margin-bottom:3rem;max-width:520px}
+
+.about-grid{display:grid;grid-template-columns:1fr 1.55fr;gap:5rem;align-items:start}
+.about-img-wrap{position:relative}
+.about-img-wrap img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:16px;border:1px solid var(--border);display:block}
+.about-img-deco{position:absolute;top:-10px;right:-10px;width:100%;height:100%;border:1px solid rgba(124,110,232,0.2);border-radius:16px;z-index:-1}
+.about-img-tag{position:absolute;bottom:14px;left:14px;background:rgba(7,7,15,0.9);backdrop-filter:blur(8px);border:1px solid var(--border);border-radius:10px;padding:0.7rem 1rem;font-size:0.8rem}
+.about-img-tag strong{color:var(--accent2);display:block;font-size:0.95rem;margin-bottom:0.1rem}
+.about-img-tag span{color:var(--text3)}
+.about-text h3{font-size:1.35rem;font-weight:700;margin-bottom:1rem}
+.about-text p{color:var(--text2);margin-bottom:1rem;font-size:0.93rem;line-height:1.85}
+.highlights{display:grid;grid-template-columns:1fr 1fr;gap:0.7rem;margin:1.75rem 0}
+.hl{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1rem;transition:border-color 0.2s}
+.hl:hover{border-color:var(--accent)}
+.hl-icon{font-size:1.15rem;margin-bottom:0.3rem}
+.hl-label{font-size:0.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em}
+.hl-val{font-size:0.88rem;font-weight:600;margin-top:0.1rem}
+.skills-heading{font-size:0.72rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:0.1em;margin:1.5rem 0 0.7rem}
+.skills{display:flex;flex-wrap:wrap;gap:0.5rem}
+.skill{background:var(--card);border:1px solid var(--border);color:var(--text2);padding:0.3rem 0.8rem;border-radius:100px;font-size:0.78rem;transition:all 0.2s;cursor:default}
+.skill:hover{border-color:var(--accent);color:var(--accent2);background:rgba(124,110,232,0.08)}
+
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-top:3rem}
+.exp-col-title{font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:1.75rem;display:flex;align-items:center;gap:0.75rem}
+.exp-col-title::after{content:'';flex:1;height:1px;background:var(--border)}
+.tl-item{padding:1.5rem 0;border-bottom:1px solid var(--border)}
+.tl-item:last-child{border-bottom:none}
+.tl-top{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:0.25rem}
+.tl-year{display:inline-block;background:rgba(124,110,232,0.1);color:var(--accent);font-size:0.68rem;font-weight:700;letter-spacing:0.06em;padding:0.18rem 0.55rem;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.tl-item h4{font-size:0.95rem;font-weight:700;line-height:1.3}
+.tl-co{color:var(--accent2);font-size:0.82rem;margin:0.2rem 0 0.6rem;font-weight:500}
+.tl-item p{color:var(--text2);font-size:0.85rem;line-height:1.75}
+
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.75rem;display:flex;flex-direction:column;transition:all 0.3s;position:relative;overflow:hidden}
+.proj-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent3));transform:scaleX(0);transform-origin:left;transition:transform 0.3s}
+.proj-card:hover{border-color:rgba(124,110,232,0.4);transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,0.3)}
+.proj-card:hover::before{transform:scaleX(1)}
+.proj-num{font-size:2.5rem;font-weight:800;color:rgba(124,110,232,0.1);line-height:1;margin-bottom:0.75rem;font-family:'Playfair Display',serif}
+.proj-tag{display:inline-block;background:rgba(124,110,232,0.12);color:var(--accent2);font-size:0.65rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:0.22rem 0.65rem;border-radius:4px;margin-bottom:0.9rem}
+.proj-card h4{font-size:1rem;font-weight:700;margin-bottom:0.65rem;line-height:1.4}
+.proj-card p{color:var(--text2);font-size:0.85rem;line-height:1.7;margin-bottom:1.25rem;flex:1}
+.techs{display:flex;gap:0.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.tech{background:var(--bg3);color:var(--text3);font-size:0.7rem;padding:0.2rem 0.55rem;border-radius:4px}
+.proj-link{display:inline-flex;align-items:center;gap:0.4rem;color:var(--accent2);font-size:0.8rem;font-weight:600;text-decoration:none;border:1px solid var(--border);padding:0.45rem 0.9rem;border-radius:6px;transition:all 0.2s;width:fit-content;margin-top:auto}
+.proj-link:hover{border-color:var(--accent);background:rgba(124,110,232,0.1)}
+.proj-link svg{width:12px;height:12px;flex-shrink:0}
+
+/* CONTACT - only social links */
+.contact-inner{max-width:640px}
+.contact-inner p{color:var(--text2);font-size:0.95rem;margin:1rem 0 2.5rem;line-height:1.85}
+.social-list{display:flex;flex-direction:column;gap:0.65rem}
+.soc-link{display:flex;align-items:center;gap:0.85rem;color:var(--text2);text-decoration:none;font-size:0.875rem;padding:1rem 1.25rem;border:1px solid var(--border);border-radius:10px;transition:all 0.25s;background:var(--card)}
+.soc-link:hover{border-color:var(--accent);color:var(--text);background:rgba(124,110,232,0.06);transform:translateX(6px)}
+.soc-icon{width:36px;height:36px;background:rgba(124,110,232,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.soc-icon svg{width:17px;height:17px;color:var(--accent2)}
+.soc-label{font-weight:600}
+.soc-val{color:var(--text3);font-size:0.78rem;margin-left:auto}
+
+footer{text-align:center;padding:2.5rem 4rem;border-top:1px solid var(--border);color:var(--text3);font-size:0.82rem}
+
+@media(max-width:960px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  #home{grid-template-columns:1fr;padding:6rem 1.5rem 3rem;text-align:center}
+  .hero-photo-wrap{order:-1}
+  .photo-border{width:220px}
+  .hero-btns{justify-content:center}
+  .hero-stats{justify-content:center}
+  section.content-section{padding:5rem 1.5rem}
+  .about-grid,.exp-grid{grid-template-columns:1fr;gap:2.5rem}
+  .proj-grid{grid-template-columns:1fr}
+  .highlights{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo">Nuril Alfian</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="home">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="badge-dot"></span>Open to Work</div>
+    <h1 class="hero-name">Muhammad<br>Nuril <em>Alfian</em></h1>
+    <p class="hero-subtitle">Actuarial Science &middot; ITERA Class of 2026</p>
+    <p class="hero-desc">Fresh graduate <strong>Sains Aktuaria</strong> dari Institut Teknologi Sumatera dengan pengalaman di bidang <strong>underwriting asuransi</strong> dan <strong>analisis data</strong>. Tertarik mengembangkan karier di risk analysis dan data analytics.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">Lihat Proyek Saya</a>
+      <a href="#contact" class="btn-outline">Hubungi Saya</a>
+      <a href="#" class="btn-outline">Unduh CV</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">3+</div><div class="stat-label">Proyek</div></div>
+      <div><div class="stat-num">3.15</div><div class="stat-label">IPK</div></div>
+      <div><div class="stat-num">2th</div><div class="stat-label">Organisasi</div></div>
+    </div>
+  </div>
+  <div class="hero-photo-wrap">
+    <div class="photo-border">
+      <img src="merah_2_11zon.png" alt="Muhammad Nuril Alfian">
+    </div>
+  </div>
+</section>
+
+  <div class="about-grid">
+    <div class="about-img-wrap">
+<img src="foto.jpg" alt="Muhammad Nuril Alfian">
+      <div class="about-img-deco"></div>
+      <div class="about-img-tag">
+        <strong>Nuril Alfian, S.Aktr.</strong>
+        <span>ITERA &middot; Class of 2026</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <h3>Halo! Saya Muhammad Nuril Alfian &#128075;</h3>
+      <p>Saya adalah fresh graduate dari Institut Teknologi Sumatera (ITERA) jurusan Sains Aktuaria. Selama kuliah, saya mengembangkan kemampuan analitis yang kuat dalam bidang statistika, pemodelan risiko, dan komputasi keuangan.</p>
+      <p>Pengalaman magang di PT Asuransi Jasa Tania dan peran sebagai asisten praktikum memberikan fondasi nyata dalam aplikasi ilmu aktuaria di dunia industri dan akademik.</p>
+      <p>Saya percaya bahwa data yang tepat adalah kunci keputusan bisnis yang optimal.</p>
+      <div class="highlights">
+        <div class="hl"><div class="hl-icon">&#127891;</div><div class="hl-label">Universitas</div><div class="hl-val">ITERA</div></div>
+        <div class="hl"><div class="hl-icon">&#128202;</div><div class="hl-label">IPK</div><div class="hl-val">3.15 / 4.00</div></div>
+        <div class="hl"><div class="hl-icon">&#128188;</div><div class="hl-label">Minat Karier</div><div class="hl-val">Risk &amp; Data Analytics</div></div>
+        <div class="hl"><div class="hl-icon">&#128205;</div><div class="hl-label">Lokasi</div><div class="hl-val">Bandar Lampung</div></div>
+      </div>
+      <div class="skills-heading">Keahlian Teknis</div>
+      <div class="skills">
+        <span class="skill">Microsoft Excel</span><span class="skill">RStudio</span><span class="skill">Google Colab</span>
+        <span class="skill">Python</span><span class="skill">Risk Assessment</span><span class="skill">Data Analysis</span>
+        <span class="skill">Machine Learning</span><span class="skill">Statistical Modeling</span>
+        <span class="skill">Insurance Underwriting</span><span class="skill">Financial Computing</span>
+        <span class="skill">Problem Solving</span><span class="skill">Komunikasi</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="content-section">
+  <div class="sec-label">Pengalaman</div>
+  <h2 class="sec-title">Perjalanan <em>Karir Saya</em></h2>
+  <p class="sec-desc">Pengalaman profesional, akademik, dan organisasi yang membentuk saya.</p>
+  <div class="exp-grid">
+    <div>
+      <div class="exp-col-title">Profesional &amp; Akademik</div>
+      <div class="tl-item">
+        <div class="tl-top"><h4>Finance Intern</h4><span class="tl-year">Jun &ndash; Ags 2024</span></div>
+        <div class="tl-co">PT Asuransi Jasa Tania</div>
+        <p>Mengelola proses administrasi asuransi: pengumpulan data nasabah, survei penilaian risiko, penerbitan &amp; pembaruan polis, edukasi produk Personal Accident, serta administrasi biaya pemasaran secara akurat.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-top"><h4>Asisten Praktikum &ndash; Financial Computing</h4><span class="tl-year">Ags &ndash; Des 2025</span></div>
+        <div class="tl-co">Institut Teknologi Sumatera</div>
+        <p>Membimbing mahasiswa menggunakan RStudio dan Google Colab untuk analisis data dan machine learning, serta mendukung studi kasus keuangan dan evaluasi praktikum.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-top"><h4>S1 Sains Aktuaria</h4><span class="tl-year">2021 &ndash; 2026</span></div>
+        <div class="tl-co">Institut Teknologi Sumatera (ITERA)</div>
+        <p>IPK: 3.15 / 4.00. Mempelajari statistika aktuaria, pemodelan risiko, komputasi keuangan, dan analisis data. Aktif dalam kegiatan kemahasiswaan dan pengabdian masyarakat.</p>
+      </div>
+    </div>
+    <div>
+      <div class="exp-col-title">Organisasi</div>
+      <div class="tl-item">
+        <div class="tl-top"><h4>Staff Ahli Mutu Anggota</h4><span class="tl-year">2024</span></div>
+        <div class="tl-co">HIMAKTU ITERA</div>
+        <p>Bertanggung jawab dalam pengawasan dan evaluasi kualitas SDM di HIMAKTU ITERA melalui program pembinaan, peningkatan kompetensi, dan penguatan soft skills anggota.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-top"><h4>Staf Divisi Akademik</h4><span class="tl-year">2023</span></div>
+        <div class="tl-co">HIMAKTU ITERA</div>
+        <p>Mendukung program HBB, Open Class, BAKMI AKTU, dan ACTOR &mdash; koordinasi pemateri, penyusunan alur kegiatan, hingga pelaksanaan program apresiasi secara profesional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="content-section alt">
+  <div class="sec-label">Proyek</div>
+  <h2 class="sec-title">Karya <em>Terbaik</em> Saya</h2>
+  <p class="sec-desc">Proyek analisis data dan pemodelan aktuaria yang dikerjakan selama masa studi.</p>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-num">01</div>
+      <span class="proj-tag">Machine Learning</span>
+      <h4>Analisis LQ45 Menggunakan Random Forest dengan Altman Z-Score</h4>
+      <p>Menganalisis saham-saham LQ45 menggunakan algoritma Random Forest yang diintegrasikan dengan metode Altman Z-Score untuk mendeteksi potensi kebangkrutan dan memprediksi performa keuangan emiten di BEI.</p>
+      <div class="techs"><span class="tech">Python</span><span class="tech">Random Forest</span><span class="tech">Altman Z-Score</span><span class="tech">Google Colab</span></div>
+      <a href="https://colab.research.google.com/drive/1odr721-4uofovj2EVL6RApx7Sz0JchZN?usp=sharing" target="_blank" class="proj-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Lihat di Google Colab
+      </a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">02</div>
+      <span class="proj-tag">Publikasi Ilmiah</span>
+      <h4>Pelatihan Penulisan Artikel Ilmiah untuk Meningkatkan Kompetensi Pendidik di SMKS Nurul Huda Pringsewu</h4>
+      <p>Kegiatan pengabdian masyarakat berupa pelatihan penulisan artikel ilmiah bagi para pendidik guna meningkatkan kompetensi akademik dan kemampuan publikasi. Dipublikasikan di Jurnal Kalandra.</p>
+      <div class="techs"><span class="tech">Pengabdian Masyarakat</span><span class="tech">Jurnal Kalandra</span><span class="tech">Artikel Ilmiah</span></div>
+      <a href="https://doi.org/10.55266/jurnalkalandra.v3i4.397" target="_blank" class="proj-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Lihat Publikasi (DOI)
+      </a>
+    </div>
+    <div class="proj-card">
+      <div class="proj-num">03</div>
+      <span class="proj-tag">Financial Analysis</span>
+      <h4>Analisis LQ45 dengan Pendekatan Grover</h4>
+      <p>Menganalisis kondisi keuangan saham-saham LQ45 menggunakan model Grover untuk mengevaluasi tingkat kesehatan keuangan dan potensi financial distress perusahaan di Bursa Efek Indonesia.</p>
+      <div class="techs"><span class="tech">Python</span><span class="tech">Grover Model</span><span class="tech">Financial Analysis</span><span class="tech">Google Colab</span></div>
+      <a href="https://colab.research.google.com/drive/1gGwtLcH8BKSnLhXSb_TfeDXtmGzsCEyQ?usp=sharing" target="_blank" class="proj-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Lihat di Google Colab
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="content-section">
+  <div class="contact-inner">
+    <div class="sec-label">Kontak</div>
+    <h2 class="sec-title">Mari <em>Terhubung</em></h2>
+    <p>Saya terbuka untuk peluang kerja di bidang risk analysis, data analytics, atau aktuaria. Jangan ragu untuk menghubungi saya melalui salah satu platform berikut!</p>
+    <div class="social-list">
+      <a href="https://linkedin.com/in/nuril-alfian-940a0b307" class="soc-link" target="_blank">
+        <div class="soc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
+        <span class="soc-label">LinkedIn</span><span class="soc-val">nuril-alfian-940a0b307</span>
+      </a>
+      <a href="mailto:nurilalfian17@gmail.com" class="soc-link">
+        <div class="soc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <span class="soc-label">Email</span><span class="soc-val">nurilalfian17@gmail.com</span>
+      </a>
+      <a href="https://github.com/nurilalfiann" class="soc-link" target="_blank">
+        <div class="soc-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div>
+        <span class="soc-label">GitHub</span><span class="soc-val">github.com/nurilalfiann</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Muhammad Nuril Alfian &middot; Sains Aktuaria &middot; ITERA &middot; Bandar Lampung</p>
+</footer>
+
+<script>
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', function() {
+  var current = '';
+  sections.forEach(function(s) { if(window.scrollY >= s.offsetTop - 120) current = s.id; });
+  navLinks.forEach(function(a) {
+    a.style.color = a.getAttribute('href') === '#'+current ? 'var(--accent2)' : '';
+  });
+});
+</script>
+</body>
+</html>
